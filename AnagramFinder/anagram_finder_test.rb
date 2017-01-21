@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../AnagramFinder/anagram_finder'
+require_relative 'anagram_finder'
 
 class AnagramFinderTest < Test::Unit::TestCase
 

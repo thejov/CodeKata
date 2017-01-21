@@ -1,5 +1,5 @@
 require 'test/unit'
-require '../TimeConverter/time_converter'
+require_relative 'time_converter'
 
 class TimeConverterTest < Test::Unit::TestCase
 
