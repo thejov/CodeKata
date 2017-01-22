@@ -1,4 +1,5 @@
 require_relative '../Figlet/figlet'
+require_relative '../VerbalTime/verbal_time'
 
 class FigletClock
 
@@ -20,6 +21,8 @@ class FigletClock
           output = good_heavens + figlet_clock.time
           puts colorize(output, color)
 
+          Thread.new { say_verbal_time if os_is_mac? }
+
           sleep 1
         end
 
@@ -28,6 +31,24 @@ class FigletClock
   end
 
   private
+
+  def os_is_mac?
+    (/darwin/ =~ RUBY_PLATFORM) != nil
+  end
+
+  def say_verbal_time
+    if (round_quartely_time?)
+      verbal_time_phrase = VerbalTime.new.verbal_time(Time.now.strftime('%I:%M'))
+      system "osascript -e 'say \"#{verbal_time_phrase}\"'"
+    end
+  end
+
+  def round_quartely_time?
+    seconds_now = Time.now.strftime('%S').to_i
+    minutes_now = Time.now.strftime('%M').to_i
+
+    seconds_now == 0 && (minutes_now == 00 || minutes_now == 15 || minutes_now == 30 || minutes_now == 45)
+  end
 
   def fonts
     Dir["#{File.dirname(__FILE__)}/../Figlet/fonts/*.flf"].map { |path| File.basename(path, '.flf') }
