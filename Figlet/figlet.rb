@@ -26,7 +26,7 @@ class Figlet
   private
 
   def parse_font_file(font)
-    font_filepath = "Figlet/fonts/#{font}.flf"
+    font_filepath = "#{File.dirname(__FILE__)}/fonts/#{font}.flf"
     raise "Font '#{font}' could not be found." unless (File.exist?(font_filepath))
 
     lines = File.readlines(font_filepath)
