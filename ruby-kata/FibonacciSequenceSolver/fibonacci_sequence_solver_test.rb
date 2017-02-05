@@ -1,5 +1,5 @@
 require 'test/unit'
-require './FibonacciSequenceSolver/fibonacci_sequence_solver'
+require_relative 'fibonacci_sequence_solver'
 
 class FibonacciSequenceSolverTest < Test::Unit::TestCase
 

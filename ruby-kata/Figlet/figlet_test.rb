@@ -14,28 +14,28 @@ class FigletTest < Test::Unit::TestCase
   def test_figlet_a_char
     actual = Figlet.new.write('a').split("\n").map { |line| line.strip }
 
-    expected = File.readlines('Figlet/test_data/a_as_figlet.txt').map { |line| line.strip }
+    expected = File.readlines( test_data_path('a_as_figlet.txt') ).map { |line| line.strip }
     assert_equal(expected, actual)
   end
 
   def test_figlet_foobar_string
     actual = Figlet.new.write('foobar').split("\n").map { |line| line.strip }
 
-    expected = File.readlines('Figlet/test_data/foobar_as_figlet.txt').map { |line| line.strip }
+    expected = File.readlines( test_data_path('foobar_as_figlet.txt') ).map { |line| line.strip }
     assert_equal(expected, actual)
   end
 
   def test_figlet_with_whitespace_in_middle
     actual = Figlet.new.write('foo bar baz').split("\n").map { |line| line.strip }
 
-    expected = File.readlines('Figlet/test_data/figlet_sentence.txt').map { |line| line.strip }
+    expected = File.readlines( test_data_path('figlet_sentence.txt') ).map { |line| line.strip }
     assert_equal(expected, actual)
   end
 
   def test_roman_font
     actual = Figlet.new('roman').write('Foo Bar 123!').split("\n").map { |line| line.strip }
 
-    expected = File.readlines('Figlet/test_data/figlet_sentence_roman.txt').map { |line| line.strip }
+    expected = File.readlines( test_data_path('figlet_sentence_roman.txt') ).map { |line| line.strip }
     assert_equal(expected, actual)
   end
 
@@ -44,6 +44,12 @@ class FigletTest < Test::Unit::TestCase
 
     expected = 'Text should only contain ASCII characters.'
     assert_equal(expected, actual, 'Should not work with non-ascii characters')
+  end
+
+  private
+
+  def test_data_path(filename)
+    File.dirname(__FILE__) + '/test_data/' + filename
   end
 
 end
