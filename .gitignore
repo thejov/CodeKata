@@ -1,2 +1,8 @@
-# Ignore RubyMine files
-/.idea
+# Ignore IDE files
+**/.idea/
+**/.vscode/
+
+# C#
+**/bin/
+**/obj/
+project.lock.json
