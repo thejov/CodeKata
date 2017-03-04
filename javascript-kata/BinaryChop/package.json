@@ -1,0 +1,15 @@
+{
+  "name": "binary_chop",
+  "version": "1.0.0",
+  "main": "src/karate_chop.js",
+  "directories": {
+    "src": "src",
+    "test": "test"
+  },
+  "dependencies": {
+    "lodash.range": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
