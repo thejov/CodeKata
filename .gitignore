@@ -9,3 +9,7 @@ project.lock.json
 
 # Ruby
 .rspec
+
+# JavaScript
+*.log
+**/node_modules/
